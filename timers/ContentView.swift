@@ -9,47 +9,76 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @EnvironmentObject var lnManager: LocalNotificationManager
+    @Environment(\.scenePhase) var scenePhase
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        NavigationView {
+            VStack {
+                if lnManager.isGranted {
+                    GroupBox("Schedule") {
+                        Button("Interval Notification") {
+                            Task {
+                                let localNotification = LocalNotification(identifier: UUID().uuidString,
+                                                                          title: "Some Title",
+                                                                          body: "some body",
+                                                                          timeInterval: 10,
+                                                                          repeats: false)
+                                await lnManager.schedule(localNotification: localNotification)
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        Button("Calendar Notification") {
+                            
+                        }
+                        .buttonStyle(.bordered)
                     }
+                    .frame(width: 300)
+                    List {
+                        ForEach(lnManager.pendingRequests, id: \.identifier) { request in
+                            VStack(alignment: .leading) {
+                                Text(request.content.title)
+                                HStack {
+                                    Text(request.identifier)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
+                            .swipeActions {
+                                Button("Delete", role: .destructive) {
+                                    lnManager.removeRequest(withIdentifier: request.identifier)
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    Button("Enable Notifications") {
+                        lnManager.openSettings()
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
-                .onDelete(perform: deleteItems)
             }
+            .navigationTitle("Local Notifications")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button {
+                        lnManager.clearRequests()
+                    } label: {
+                        Image(systemName: "clear.fill")
+                            .imageScale(.large)
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
         }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+        .navigationViewStyle(.stack)
+        .task {
+            try? await lnManager.requestAuthorization()
         }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
+        .onChange(of: scenePhase) { newValue in
+            if newValue == .active {
+                Task {
+                    await lnManager.getCurrentSettings()
+                    await lnManager.getPendingRequests()
+                }
             }
         }
     }
@@ -57,5 +86,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .environmentObject(LocalNotificationManager())
 }
