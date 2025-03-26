@@ -11,28 +11,12 @@ import SwiftData
 struct ContentView: View {
     @EnvironmentObject var lnManager: LocalNotificationManager
     @Environment(\.scenePhase) var scenePhase
+    @State private var showingTimerListView = false
+
     var body: some View {
         NavigationView {
             VStack {
                 if lnManager.isGranted {
-                    GroupBox("Schedule") {
-                        Button("Interval Notification") {
-                            Task {
-                                let localNotification = LocalNotification(identifier: UUID().uuidString,
-                                                                          title: "Some Title",
-                                                                          body: "some body",
-                                                                          timeInterval: 10,
-                                                                          repeats: false)
-                                await lnManager.schedule(localNotification: localNotification)
-                            }
-                        }
-                        .buttonStyle(.bordered)
-                        Button("Calendar Notification") {
-                            
-                        }
-                        .buttonStyle(.bordered)
-                    }
-                    .frame(width: 300)
                     List {
                         ForEach(lnManager.pendingRequests, id: \.identifier) { request in
                             VStack(alignment: .leading) {
@@ -56,8 +40,14 @@ struct ContentView: View {
                     }
                     .buttonStyle(.borderedProminent)
                 }
+                Spacer()
+                Button {
+                    showingTimerListView = true
+                } label: {
+                    Label("Add Timer", systemImage: "plus.circle.fill").font(.system(.body, design: .rounded))
+                }
             }
-            .navigationTitle("Local Notifications")
+            .navigationTitle("Timers")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -80,6 +70,9 @@ struct ContentView: View {
                     await lnManager.getPendingRequests()
                 }
             }
+        }
+        .sheet(isPresented: $showingTimerListView) {
+            TimerListView()
         }
     }
 }
