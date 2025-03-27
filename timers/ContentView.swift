@@ -12,7 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var lnManager: LocalNotificationManager
     @Environment(\.scenePhase) var scenePhase
     @State private var showingTimerListView = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -58,8 +58,8 @@ struct ContentView: View {
         .task {
             try? await lnManager.requestAuthorization()
         }
-        .onChange(of: scenePhase) { newValue in
-            if newValue == .active {
+        .onChange(of: scenePhase) {
+            if scenePhase == .active {
                 Task {
                     await lnManager.getCurrentSettings()
                     await lnManager.getPendingRequests()
