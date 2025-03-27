@@ -10,12 +10,18 @@ import SwiftData
 
 @main
 struct timersApp: App {
-    @StateObject var lnManager = LocalNotificationManager()
+    @StateObject private var timerManager: TimerManager
+
+    init() {
+        let lnManager = LocalNotificationManager()
+        let dataManager = DataManager()
+        _timerManager = StateObject(wrappedValue: TimerManager(dataManager: dataManager, notificationManager: lnManager))
+    }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(lnManager)
+                .environmentObject(timerManager)
         }
     }
 }

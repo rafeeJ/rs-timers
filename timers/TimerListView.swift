@@ -7,38 +7,47 @@
 import SwiftUI
 
 struct TimerListView: View {
-    @EnvironmentObject var lnManager: LocalNotificationManager
+    @EnvironmentObject var timerManager: TimerManager
 
-    var body: some View {
-        let timerCategories: [TimerCategory] = timers.map { key, value in
+    var timerCategories: [TimerCategory] {
+        timers.map { key, value in
             TimerCategory(name: key, timers: value)
         }
+    }
 
-        return List {
+    var body: some View {
+        List {
             ForEach(timerCategories, id: \.name) { category in
                 Section(header: Text(category.name)) {
                     ForEach(category.timers) { timer in
-                        Button {
-                            Task {
-                                let localNotification = LocalNotification(
-                                    identifier: timer.id.uuidString,
-                                    title: timer.name,
-                                    body: "",
-                                    timeInterval: TimeInterval(timer.duration * 60),
-                                    repeats: false
-                                )
-                                await lnManager.schedule(localNotification: localNotification)
-                            }
-                        } label: {
-                            VStack(alignment: .leading) {
-                                Text(timer.name)
-                                Text("\(timer.duration) Minutes")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
+                        TimerButton(timer: timer)
                     }
                 }
+            }
+        }
+    }
+}
+
+struct TimerButton: View {
+    @EnvironmentObject var timerManager: TimerManager
+    var timer: TimerItem
+
+    var body: some View {
+        Button {
+            let finishTime = Date().addingTimeInterval(TimeInterval(timer.duration * 60))
+            let newTimer = TimerDisplay(
+                id: UUID(),
+                name: timer.name,
+                duration: TimeInterval(timer.duration * 60),
+                finishTime: finishTime
+            )
+            timerManager.addTimer(newTimer)
+        } label: {
+            VStack(alignment: .leading) {
+                Text(timer.name)
+                Text("\(timer.duration) Minutes")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
             }
         }
     }
