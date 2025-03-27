@@ -9,29 +9,35 @@ import SwiftUI
 struct TimerListView: View {
     @EnvironmentObject var lnManager: LocalNotificationManager
 
-    let timerPresets = [
-        Preset(identifier: UUID().uuidString, title: "Short Timer", body: "This is a short timer", timeInterval: 5, repeats: false),
-        Preset(identifier: UUID().uuidString, title: "Medium Timer", body: "This is a medium timer", timeInterval: 10, repeats: false),
-        Preset(identifier: UUID().uuidString, title: "Long Timer", body: "This is a long timer", timeInterval: 30, repeats: false)
-    ]
-
     var body: some View {
-        List(timerPresets) { preset in
-            Button {
-                Task {
-                    let localNotification = LocalNotification(identifier: preset.identifier,
-                                                              title: preset.title,
-                                                              body: preset.body,
-                                                              timeInterval: preset.timeInterval,
-                                                              repeats: preset.repeats)
-                    await lnManager.schedule(localNotification: localNotification)
-                }
-            } label: {
-                VStack(alignment: .leading) {
-                    Text(preset.title)
-                    Text("\(Int(preset.timeInterval)) seconds")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+        let timerCategories: [TimerCategory] = timers.map { key, value in
+            TimerCategory(name: key, timers: value)
+        }
+
+        return List {
+            ForEach(timerCategories, id: \.name) { category in
+                Section(header: Text(category.name)) {
+                    ForEach(category.timers) { timer in
+                        Button {
+                            Task {
+                                let localNotification = LocalNotification(
+                                    identifier: timer.id.uuidString,
+                                    title: timer.name,
+                                    body: "",
+                                    timeInterval: TimeInterval(timer.duration * 60),
+                                    repeats: false
+                                )
+                                await lnManager.schedule(localNotification: localNotification)
+                            }
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(timer.name)
+                                Text("\(timer.duration) seconds")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
                 }
             }
         }

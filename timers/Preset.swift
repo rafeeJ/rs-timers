@@ -9,11 +9,13 @@
 
 import Foundation
 
-struct Preset: Identifiable {
-    var id = UUID()
-    var identifier: String
-    var title: String
-    var body: String
-    var timeInterval: Double
-    var repeats: Bool
+struct TimerCategory: Decodable {
+    let name: String
+    let timers: [TimerItem]
+}
+
+struct TimerItem: Identifiable, Decodable {
+    let id: UUID
+    let name: String
+    let duration: Int
 }
