@@ -21,11 +21,6 @@ struct ContentView: View {
                         ForEach(lnManager.pendingRequests, id: \.identifier) { request in
                             VStack(alignment: .leading) {
                                 Text(request.content.title)
-                                HStack {
-                                    Text(request.identifier)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
                             }
                             .swipeActions {
                                 Button("Delete", role: .destructive) {

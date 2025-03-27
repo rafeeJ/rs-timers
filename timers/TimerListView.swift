@@ -32,7 +32,7 @@ struct TimerListView: View {
                         } label: {
                             VStack(alignment: .leading) {
                                 Text(timer.name)
-                                Text("\(timer.duration) seconds")
+                                Text("\(timer.duration) Minutes")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
