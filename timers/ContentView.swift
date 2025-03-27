@@ -12,7 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var timerManager: TimerManager
     @Environment(\.scenePhase) var scenePhase
     @State private var showingTimerListView = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -31,14 +31,12 @@ struct ContentView: View {
                         }
                     }
                 }
-
+                
                 Spacer()
-                Button {
-                    showingTimerListView = true
-                } label: {
-                    Label("Add Timer", systemImage: "plus.circle.fill")
-                        .font(.system(.body, design: .rounded))
-                }
+                AddTimerButton()
+                    .onTapGesture {
+                        showingTimerListView = true
+                    }
             }
             .navigationTitle("Timers")
             .toolbar {
@@ -58,6 +56,26 @@ struct ContentView: View {
         }
     }
 }
+
+struct AddTimerButton: View {
+    var body: some View {
+        Text("ADD TIMER")
+            .font(.custom("Jersey10-Regular", size: 32))
+            .foregroundColor(Color(red: 216/255, green: 179/255, blue: 110/255))
+            .padding(.vertical, 10)
+            .padding(.horizontal, 30)
+            .background(
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(Color(red: 94/255, green: 84/255, blue: 66/255))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4)
+                            .stroke(Color.black, lineWidth: 2)
+                    )
+                    .shadow(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)
+            )
+    }
+}
+
 
 #Preview {
     ContentView()

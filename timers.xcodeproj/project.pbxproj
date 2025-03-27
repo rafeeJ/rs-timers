@@ -10,9 +10,22 @@
 		0A39F0EE2D94833200E2EFF0 /* timers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0AE265212D96072A00DF1DF1 /* Exceptions for "timers" folder in "timers" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0A39F0ED2D94833200E2EFF0 /* timers */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0A39F0F02D94833200E2EFF0 /* timers */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0AE265212D96072A00DF1DF1 /* Exceptions for "timers" folder in "timers" target */,
+			);
 			path = timers;
 			sourceTree = "<group>";
 		};
@@ -256,6 +269,7 @@
 				DEVELOPMENT_TEAM = TF6R84Z634;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = timers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -286,6 +300,7 @@
 				DEVELOPMENT_TEAM = TF6R84Z634;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = timers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
