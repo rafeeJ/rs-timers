@@ -65,14 +65,19 @@ struct AddTimerButton: View {
             .padding(.vertical, 10)
             .padding(.horizontal, 30)
             .background(
-                RoundedRectangle(cornerRadius: 4)
-                    .fill(Color(red: 94/255, green: 84/255, blue: 66/255))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color.black, lineWidth: 2)
-                    )
-                    .shadow(color: .black.opacity(0.5), radius: 2, x: 2, y: 2)
+                ZStack {
+                    Color(red: 94/255, green: 84/255, blue: 66/255)
+
+                    RoundedRectangle(cornerRadius: 0)
+                        .strokeBorder(Color.black, lineWidth: 4)
+                        .padding(2)
+
+                    RoundedRectangle(cornerRadius: 0)
+                        .strokeBorder(Color(red: 160/255, green: 140/255, blue: 100/255), lineWidth: 1)
+                        .padding(6)
+                }
             )
+            .fixedSize()
     }
 }
 

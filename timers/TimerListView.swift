@@ -21,16 +21,21 @@ struct TimerListView: View {
             List {
                 Section(header: Text("Quick Timers")) {
                     TimerButton(timer: TimerItem(id: UUID(), name: "1 Minute", duration: 1))
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
                 }
                 
                 ForEach(timerCategories, id: \.name) { category in
                     Section(header: Text(category.name)) {
                         ForEach(category.timers) { timer in
                             TimerButton(timer: timer)
+                                .listRowInsets(EdgeInsets())
+                                .listRowBackground(Color.clear)
                         }
                     }
                 }
             }
+            .listStyle(PlainListStyle())
             .navigationTitle("Add Timer")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -65,24 +70,54 @@ struct TimerButton: View {
     }
     
     var body: some View {
-        Button {
-            let finishTime = Date().addingTimeInterval(TimeInterval(timer.duration * 60))
-            let newTimer = TimerDisplay(
-                id: UUID(),
-                name: timer.name,
-                duration: TimeInterval(timer.duration * 60),
-                finishTime: finishTime
-            )
-            timerManager.addTimer(newTimer)
-            dismiss()
-        } label: {
+        HStack {
             VStack(alignment: .leading) {
                 Text(timer.name)
+                    .font(.custom("Jersey10-Regular", size: 24))
+                    .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
+
                 Text(formattedDuration)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 10)
+                    .font(.custom("Jersey10-Regular", size: 20))
+                    .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
+                    .background(
+                        Color(red: 33/255, green: 30/255, blue: 23/255)
+                    )
+                    .border(Color(red: 19/255, green: 16/255, blue: 8/255), width: 2)
+            }
+            .padding(10)
+            
+            Spacer()
+            
+            Button(action: {
+                let finishTime = Date().addingTimeInterval(TimeInterval(timer.duration * 60))
+                let newTimer = TimerDisplay(
+                    id: UUID(),
+                    name: timer.name,
+                    duration: TimeInterval(timer.duration * 60),
+                    finishTime: finishTime
+                )
+                timerManager.addTimer(newTimer)
+                dismiss()
+            }) {
+                Text("START")
+                    .font(.custom("Jersey10-Regular", size: 24))
+                    .padding(5)
+                    .background(Color(red: 91/255, green: 120/255, blue: 58/255))
+                    .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
+                    .cornerRadius(5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color(red: 22/255, green: 19/255, blue: 14/255), lineWidth: 2))
             }
         }
+        .padding(.horizontal, 10)
+        .background(Color(red: 39/255, green: 29/255, blue: 18/255))
+        .overlay(
+            RoundedRectangle(cornerRadius: 2)
+            .stroke(Color(red: 89/255, green: 71/255, blue: 49/255), lineWidth: 2)
+        )
+        .padding(2)
     }
 }
 

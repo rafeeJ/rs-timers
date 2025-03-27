@@ -29,6 +29,11 @@
 			path = timers;
 			sourceTree = "<group>";
 		};
+		0AE265222D9615FB00DF1DF1 /* Backgrounds */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +50,7 @@
 		0A39F0E52D94833200E2EFF0 = {
 			isa = PBXGroup;
 			children = (
+				0AE265222D9615FB00DF1DF1 /* Backgrounds */,
 				0A39F0F02D94833200E2EFF0 /* timers */,
 				0A39F0EF2D94833200E2EFF0 /* Products */,
 			);
@@ -75,6 +81,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				0A39F0F02D94833200E2EFF0 /* timers */,
+				0AE265222D9615FB00DF1DF1 /* Backgrounds */,
 			);
 			name = timers;
 			packageProductDependencies = (
