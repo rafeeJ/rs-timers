@@ -17,36 +17,78 @@ struct TimerListView: View {
     }
     
     var body: some View {
-        NavigationStack{
-            List {
-                Section(header: Text("Quick Timers")) {
-                    TimerButton(timer: TimerItem(id: UUID(), name: "1 Minute", duration: 1))
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.clear)
-                }
+        NavigationStack {
+            ZStack {
+                // Background
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color(red: 26/255, green: 22/255, blue: 16/255),
+                        Color(red: 19/255, green: 16/255, blue: 12/255)
+                    ]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .ignoresSafeArea()
                 
-                ForEach(timerCategories, id: \.name) { category in
-                    Section(header: Text(category.name)) {
-                        ForEach(category.timers) { timer in
-                            TimerButton(timer: timer)
-                                .listRowInsets(EdgeInsets())
-                                .listRowBackground(Color.clear)
+                List {
+                    Section {
+                        TimerButton(timer: TimerItem(id: UUID(), name: "1 Minute", duration: 1))
+                            .listRowInsets(EdgeInsets())
+                            .listRowBackground(Color.clear)
+                    } header: {
+                        TimerListHeader(title: "Test")
+                    }
+                    ForEach(timerCategories, id: \.name) { category in
+                        Section {
+                            ForEach(category.timers) { timer in
+                                TimerButton(timer: timer)
+                                    .listRowInsets(EdgeInsets())
+                                    .listRowBackground(Color.clear)
+                            }
+                        } header: {
+                            TimerListHeader(title: category.name)
                         }
                     }
                 }
+                .listStyle(PlainListStyle())
             }
-            .listStyle(PlainListStyle())
-            .navigationTitle("Add Timer")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Add Timer")
+                        .font(.custom("Jersey10-Regular", size: 32))
+                        .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         dismiss()
                     } label: {
                         Image(systemName: "xmark")
+                            .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
                     }
                 }
             }
+        }.onAppear {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+            appearance.backgroundColor = UIColor(Color.orange.opacity(0.2))
+            
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
+    }
+}
+
+struct TimerListHeader: View {
+    var title: String
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(Color(red: 76/255, green: 65/255, blue: 47/255))
+                .frame(height: .infinity)
+            Text(title).font(.custom("Jersey10-Regular", size: 24)).foregroundStyle(Color(red: 231/255, green: 196/255, blue: 132/255))
+        } .listRowInsets(EdgeInsets())
     }
 }
 
@@ -75,7 +117,7 @@ struct TimerButton: View {
                 Text(timer.name)
                     .font(.custom("Jersey10-Regular", size: 24))
                     .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
-
+                
                 Text(formattedDuration)
                     .padding(.horizontal, 10)
                     .font(.custom("Jersey10-Regular", size: 20))
@@ -108,14 +150,22 @@ struct TimerButton: View {
                     .cornerRadius(5)
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color(red: 22/255, green: 19/255, blue: 14/255), lineWidth: 2))
+                            .stroke(Color(red: 22/255, green: 19/255, blue: 14/255), lineWidth: 2))
             }
         }
         .padding(.horizontal, 10)
-        .background(Color(red: 39/255, green: 29/255, blue: 18/255))
-        .overlay(
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 45/255, green: 34/255, blue: 20/255),
+                    Color(red: 39/255, green: 29/255, blue: 18/255)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )        .overlay(
             RoundedRectangle(cornerRadius: 2)
-            .stroke(Color(red: 89/255, green: 71/255, blue: 49/255), lineWidth: 2)
+                .stroke(Color(red: 89/255, green: 71/255, blue: 49/255), lineWidth: 2)
         )
         .padding(2)
     }
