@@ -15,37 +15,63 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(timerManager.timers) { timer in
-                        VStack(alignment: .leading) {
-                            Text(timer.name)
-                            Text(timer.finishTime, style: .relative)
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                        .swipeActions {
-                            Button("Delete", role: .destructive) {
-                                timerManager.deleteTimer(timer)
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [
+                        Color(red: 80/255, green: 60/255, blue: 40/255),
+                        Color(red: 50/255, green: 35/255, blue: 20/255)
+                    ]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                .edgesIgnoringSafeArea(.all)
+
+                RadialGradient(
+                    gradient: Gradient(colors: [
+                        Color(red: 120/255, green: 100/255, blue: 80/255).opacity(0.4),
+                        Color.clear
+                    ]),
+                    center: .bottomLeading,
+                    startRadius: 5,
+                    endRadius: 400
+                )
+                .blendMode(.overlay)
+                .edgesIgnoringSafeArea(.all)
+
+                VStack {
+                    List {
+                        ForEach(timerManager.timers) { timer in
+                            ActiveTimerListItem(timer: timer)
+                            .swipeActions {
+                                Button("Delete", role: .destructive) {
+                                    timerManager.deleteTimer(timer)
+                                }
                             }
                         }
                     }
+                    .listStyle(PlainListStyle())
+                    
+                    Spacer()
+                    AddTimerButton()
+                        .onTapGesture {
+                            showingTimerListView = true
+                        }
                 }
-                
-                Spacer()
-                AddTimerButton()
-                    .onTapGesture {
-                        showingTimerListView = true
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Timers")
+                            .font(.custom("Jersey10-Regular", size: 32))
+                            .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
                     }
-            }
-            .navigationTitle("Timers")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        timerManager.clearAllTimers()
-                    } label: {
-                        Image(systemName: "clear.fill")
-                            .imageScale(.large)
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            timerManager.clearAllTimers()
+                        } label: {
+                            Image(systemName: "clear.fill")
+                                .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
+                        }
                     }
                 }
             }
@@ -53,6 +79,13 @@ struct ContentView: View {
         .navigationViewStyle(.stack)
         .sheet(isPresented: $showingTimerListView) {
             TimerListView()
+        }.onAppear {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+            appearance.backgroundColor = UIColor(Color.gray.opacity(0.2))
+            
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
     }
 }

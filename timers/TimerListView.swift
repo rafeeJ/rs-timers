@@ -19,16 +19,30 @@ struct TimerListView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color(red: 26/255, green: 22/255, blue: 16/255),
-                        Color(red: 19/255, green: 16/255, blue: 12/255)
-                    ]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .ignoresSafeArea()
+                ZStack {
+                    LinearGradient(
+                        gradient: Gradient(colors: [
+                            Color(red: 80/255, green: 60/255, blue: 40/255),
+                            Color(red: 50/255, green: 35/255, blue: 20/255)
+                        ]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                    .edgesIgnoringSafeArea(.all)
+                    
+                    RadialGradient(
+                        gradient: Gradient(colors: [
+                            Color(red: 120/255, green: 100/255, blue: 80/255).opacity(0.4),
+                            Color.clear
+                        ]),
+                        center: .bottomLeading,
+                        startRadius: 5,
+                        endRadius: 400
+                    )
+                    .blendMode(.overlay)
+                    .edgesIgnoringSafeArea(.all)
+                    
+                }.ignoresSafeArea()
                 
                 List {
                     Section {
@@ -71,7 +85,7 @@ struct TimerListView: View {
         }.onAppear {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-            appearance.backgroundColor = UIColor(Color.orange.opacity(0.2))
+            appearance.backgroundColor = UIColor(Color.gray.opacity(0.2))
             
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
@@ -87,8 +101,12 @@ struct TimerListHeader: View {
             Rectangle()
                 .fill(Color(red: 76/255, green: 65/255, blue: 47/255))
                 .frame(height: .infinity)
+                .overlay(
+                    Rectangle()
+                        .stroke(Color.black, lineWidth: 2)
+                )
             Text(title).font(.custom("Jersey10-Regular", size: 24)).foregroundStyle(Color(red: 231/255, green: 196/255, blue: 132/255))
-        } .listRowInsets(EdgeInsets())
+        }.listRowInsets(EdgeInsets())
     }
 }
 
@@ -167,7 +185,8 @@ struct TimerButton: View {
             RoundedRectangle(cornerRadius: 2)
                 .stroke(Color(red: 89/255, green: 71/255, blue: 49/255), lineWidth: 2)
         )
-        .padding(2)
+        .padding(4)
+        .shadow(color: Color.black.opacity(0.4), radius: 4, x: 0, y: 4)
     }
 }
 
