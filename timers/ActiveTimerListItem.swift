@@ -14,7 +14,9 @@ struct ActiveTimerListItem: View {
         ZStack {
             
             Rectangle()
-                .fill(Color(red: 76/255, green: 65/255, blue: 47/255))
+                .fill(timer.finishTime < Date() ?
+                      Color(red: 91/255, green: 120/255, blue: 58/255) :
+                      Color(red: 76/255, green: 65/255, blue: 47/255))
                 .overlay(
                     Rectangle()
                         .stroke(Color.black, lineWidth: 2)
@@ -37,6 +39,7 @@ struct ActiveTimerListItem: View {
 
 #Preview {
     List {
-        ActiveTimerListItem(timer: TimerDisplay(id: UUID(), name: "Test", duration: 50, finishTime: Date()))
+        ActiveTimerListItem(timer: TimerDisplay(id: UUID(), name: "Next Week", duration: 50, finishTime: Date(timeInterval: 600, since: Date())))
+        ActiveTimerListItem(timer: TimerDisplay(id: UUID(), name: "5 Mins ago", duration: 50, finishTime: Date(timeInterval: -600, since: Date())))
     }.listStyle(PlainListStyle())
 }
