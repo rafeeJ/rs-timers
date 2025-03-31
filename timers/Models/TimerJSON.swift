@@ -9,13 +9,15 @@
 
 import Foundation
 
-struct TimerCategory: Decodable {
+struct TimerCategory: Identifiable, Decodable {
+    let id: Int
     let name: String
     let timers: [TimerItem]
 }
 
 struct TimerItem: Identifiable, Decodable {
-    let id: UUID
+    let id: Int
     let name: String
     let duration: Int
+    let imageUrl: String
 }

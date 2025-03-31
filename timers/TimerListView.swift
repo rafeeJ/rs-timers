@@ -11,9 +11,7 @@ struct TimerListView: View {
     @Environment(\.dismiss) private var dismiss
     
     var timerCategories: [TimerCategory] {
-        timers.map { key, value in
-            TimerCategory(name: key, timers: value)
-        }
+        timers
     }
     
     let fontColor = Color(red: 255/255, green: 152/255, blue: 31/255)
@@ -22,13 +20,13 @@ struct TimerListView: View {
         NavigationStack {
             List {
                 Section {
-                    TimerListViewItem(timer: TimerItem(id: UUID(), name: "1 Minute", duration: 1))
+                    TimerListViewItem(timer: TimerItem(id: 1, name: "1 Minute", duration: 1, imageUrl: ""))
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.clear)
                 } header: {
                     TimerListHeader(title: "Test")
                 }
-                ForEach(timerCategories, id: \.name) { category in
+                ForEach(timerCategories) { category in
                     Section {
                         ForEach(category.timers) { timer in
                             TimerListViewItem(timer: timer)

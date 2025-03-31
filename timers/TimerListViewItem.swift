@@ -30,6 +30,28 @@ struct TimerListViewItem: View {
     
     var body: some View {
         HStack {
+            AsyncImage(url: URL(string: timer.imageUrl)) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                        .frame(width: 30, height: 30)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .cornerRadius(8)
+                case .failure:
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.gray)
+                @unknown default:
+                    EmptyView()
+                }
+            }
+            
             VStack(alignment: .leading, spacing: 2) {
                 Text(timer.name)
                     .padding(.horizontal, 10)
@@ -88,7 +110,7 @@ struct TimerListViewItem: View {
 
 #Preview {
     List {
-        TimerListViewItem(timer: TimerItem(id: UUID(),name: "Test", duration: 10))
+        TimerListViewItem(timer: TimerItem(id: 1,name: "Test", duration: 10, imageUrl: "https://oldschool.runescape.wiki/images/Oak_tree.png"))
     }
     .listStyle(PlainListStyle())
     .navigationBarTitleDisplayMode(.inline)

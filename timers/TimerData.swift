@@ -6,7 +6,7 @@
 //
 import Foundation
 
-var timers: [String: [TimerItem]] = load("timers.json")
+var timers: [TimerCategory] = load("timers.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
