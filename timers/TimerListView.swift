@@ -62,7 +62,7 @@ struct TimerListView: View {
                 }
             }
         }
-        .searchable(text: $searchText)
+        .searchable(text: $searchText, prompt: "Search Timers")
         .onAppear {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
@@ -70,6 +70,9 @@ struct TimerListView: View {
             
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            
+            let x = UISearchTextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+            x.backgroundColor = .white
         }
     }
     
