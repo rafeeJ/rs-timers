@@ -67,7 +67,7 @@
         "id": 10,
         "name": "Snape Grass",
         "duration": 70,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Snape_Grass.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Snape_grass.png"
       }
     ]
   },
@@ -79,7 +79,7 @@
         "id": 11,
         "name": "Marigold",
         "duration": 20,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Marigold.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Marigolds.png"
       },
       {
         "id": 12,
@@ -91,25 +91,25 @@
         "id": 13,
         "name": "Nasturtium",
         "duration": 20,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Nasturtium.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Nasturtiums.png"
       },
       {
         "id": 14,
         "name": "Woad",
         "duration": 20,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Woad.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Woad_leaf_5.png"
       },
       {
         "id": 15,
         "name": "Limpwurt",
         "duration": 20,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Limpwurt.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Limpwurt_root.png"
       },
       {
         "id": 16,
         "name": "White Lily",
         "duration": 20,
-        "imageUrl": "https://oldschool.runescape.wiki/images/White_Lily.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/White_lily.png"
       }
     ]
   },
@@ -127,7 +127,7 @@
         "id": 18,
         "name": "Cadavaberries",
         "duration": 120,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Cadavaberries.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Cadava_berries.png"
       },
       {
         "id": 19,
@@ -145,13 +145,13 @@
         "id": 21,
         "name": "Whiteberries",
         "duration": 160,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Whiteberries.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/White_berries.png"
       },
       {
         "id": 22,
         "name": "Poison Ivy",
         "duration": 160,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Poison_Ivy.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Poison_ivy_berries.png"
       }
     ]
   },
@@ -169,37 +169,37 @@
         "id": 24,
         "name": "Hammerstone",
         "duration": 40,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Hammerstone.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Hammerstone_hops.png"
       },
       {
         "id": 25,
         "name": "Asgarnian",
         "duration": 50,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Asgarnian.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Asgarnian_hops.png"
       },
       {
         "id": 26,
         "name": "Jute",
         "duration": 50,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Jute.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Jute_fibre.png"
       },
       {
         "id": 27,
         "name": "Yanillian",
         "duration": 60,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Yanillian.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Yanillian_hops.png"
       },
       {
         "id": 28,
         "name": "Krandorian",
         "duration": 70,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Krandorian.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Krandorian_hops.png"
       },
       {
         "id": 29,
         "name": "Wildblood",
         "duration": 80,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Wildblood.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Wildblood_hops.png"
       }
     ]
   },
@@ -211,7 +211,7 @@
         "id": 30,
         "name": "Guam",
         "duration": 80,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Guam.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Guam_leaf.png"
       },
       {
         "id": 31,
@@ -235,7 +235,7 @@
         "id": 34,
         "name": "Ranarr",
         "duration": 80,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Ranarr.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Ranarr_weed.png"
       },
       {
         "id": 35,
@@ -247,7 +247,7 @@
         "id": 36,
         "name": "Irit",
         "duration": 80,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Irit.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Irit_leaf.png"
       },
       {
         "id": 37,
@@ -289,7 +289,7 @@
         "id": 43,
         "name": "Dwarf Weed",
         "duration": 80,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Dwarf_Weed.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Dwarf_weed.png"
       },
       {
         "id": 44,
@@ -303,12 +303,6 @@
         "duration": 80,
         "imageUrl": "https://oldschool.runescape.wiki/images/Goutweed.png"
       },
-      {
-        "id": 46,
-        "name": "Anyherb",
-        "duration": 80,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Anyherb.png"
-      }
     ]
   },
   {
@@ -319,31 +313,31 @@
         "id": 47,
         "name": "Oak",
         "duration": 160,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Oak.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Oak_sapling.png"
       },
       {
         "id": 48,
         "name": "Willow",
         "duration": 240,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Willow.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Willow_sapling.png"
       },
       {
         "id": 49,
         "name": "Maple",
         "duration": 320,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Maple.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Maple_sapling.png"
       },
       {
         "id": 50,
         "name": "Yew",
         "duration": 400,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Yew.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Yew_sapling.png"
       },
       {
         "id": 51,
         "name": "Magic",
         "duration": 480,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Magic.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Magic_sapling.png"
       }
     ]
   },
@@ -355,7 +349,7 @@
         "id": 52,
         "name": "Apple",
         "duration": 960,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Apple.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Cooking_apple.png"
       },
       {
         "id": 53,
@@ -373,7 +367,7 @@
         "id": 55,
         "name": "Curry",
         "duration": 960,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Curry.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Curry_leaf.png"
       },
       {
         "id": 56,
@@ -385,13 +379,13 @@
         "id": 57,
         "name": "Papaya",
         "duration": 960,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Papaya.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Papaya_fruit.png"
       },
       {
         "id": 58,
         "name": "Palm",
         "duration": 960,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Palm.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Coconut.png"
       },
       {
         "id": 59,
@@ -409,13 +403,13 @@
         "id": 60,
         "name": "Cactus",
         "duration": 560,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Cactus.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Cactus_spine.png"
       },
       {
         "id": 61,
         "name": "Potato Cactus",
         "duration": 70,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Potato_Cactus.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Potato_cactus.png"
       }
     ]
   },
@@ -427,13 +421,13 @@
         "id": 62,
         "name": "Teak",
         "duration": 4480,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Teak.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Teak_logs.png"
       },
       {
         "id": 63,
         "name": "Mahogany",
         "duration": 5120,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Mahogany.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Mahogany_logs.png"
       }
     ]
   },
@@ -445,19 +439,19 @@
         "id": 64,
         "name": "Attas",
         "duration": 5120,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Attas.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Attas_seed_5.png"
       },
       {
         "id": 65,
         "name": "Iasor",
         "duration": 5120,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Iasor.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Iasor_seed_5.png"
       },
       {
         "id": 66,
         "name": "Kronos",
         "duration": 5120,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Kronos.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Kronos_seed_5.png"
       }
     ]
   },
@@ -475,7 +469,7 @@
         "id": 68,
         "name": "Grape",
         "duration": 35,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Grape.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Grapes.png"
       },
       {
         "id": 69,
@@ -487,43 +481,43 @@
         "id": 70,
         "name": "Belladonna",
         "duration": 320,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Belladonna.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Nightshade_3.png"
       },
       {
         "id": 71,
         "name": "Calquat",
         "duration": 1280,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Calquat.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Calquat_fruit.png"
       },
       {
         "id": 72,
         "name": "Spirit Tree",
         "duration": 3840,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Spirit_Tree.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Spirit_seed_5.png"
       },
       {
         "id": 73,
         "name": "Celastrus",
         "duration": 800,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Celastrus.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Celastrus_bark.png"
       },
       {
         "id": 74,
         "name": "Redwood",
         "duration": 6400,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Redwood.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Redwood_logs.png"
       },
       {
         "id": 75,
         "name": "Hespori",
         "duration": 1920,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Hespori.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Hespori_seed_5.png"
       },
       {
         "id": 76,
         "name": "Crystal Tree",
         "duration": 480,
-        "imageUrl": "https://oldschool.runescape.wiki/images/Crystal_Tree.png"
+        "imageUrl": "https://oldschool.runescape.wiki/images/Crystal_acorn_5.png"
       }
     ]
   }
