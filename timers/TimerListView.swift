@@ -9,9 +9,14 @@ import SwiftUI
 struct TimerListView: View {
     @EnvironmentObject var timerManager: TimerManager
     @Environment(\.dismiss) private var dismiss
-    
+    @State private var searchText = ""
+
     var timerCategories: [TimerCategory] {
         timers
+    }
+    
+    var allTimers: [TimerItem] {
+        timerCategories.flatMap { $0.timers }
     }
     
     let fontColor = Color(red: 255/255, green: 152/255, blue: 31/255)
@@ -20,13 +25,13 @@ struct TimerListView: View {
         NavigationStack {
             List {
                 Section {
-                    TimerListViewItem(timer: TimerItem(id: 1, name: "1 Minute", duration: 1, imageUrl: ""))
+                    TimerListViewItem(timer: TimerItem(id: 1, name: "1 Minute", duration: 1, imageUrl: "https://oldschool.runescape.wiki/images/Scythe_of_vitur_%28uncharged%29.png?c82f9"))
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.clear)
                 } header: {
                     TimerListHeader(title: "Test")
                 }
-                ForEach(timerCategories) { category in
+                ForEach(searchResults) { category in
                     Section {
                         ForEach(category.timers) { timer in
                             TimerListViewItem(timer: timer)
@@ -56,7 +61,9 @@ struct TimerListView: View {
                     }
                 }
             }
-        }.onAppear {
+        }
+        .searchable(text: $searchText)
+        .onAppear {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
             appearance.backgroundColor = UIColor(red: 76/255, green: 65/255, blue: 47/255, alpha: 1.0)
@@ -65,6 +72,15 @@ struct TimerListView: View {
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
     }
+    
+    var searchResults: [TimerCategory] {
+        if searchText.isEmpty {
+            return timerCategories
+        } else {
+            return [TimerCategory(id: 1, name: "Search Results", timers: allTimers.filter { $0.name.contains(searchText) })]
+        }
+    }
+        
 }
 
 struct TimerListHeader: View {
