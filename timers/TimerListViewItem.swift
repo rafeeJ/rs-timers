@@ -81,6 +81,7 @@ struct TimerListViewItem: View {
                     id: UUID(),
                     name: timer.name,
                     duration: TimeInterval(timer.duration * 60),
+                    imageUrl: timer.imageUrl,
                     finishTime: finishTime
                 )
                 timerManager.addTimer(newTimer)

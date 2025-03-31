@@ -23,6 +23,28 @@ struct ActiveTimerListItem: View {
                 )
             
             HStack {
+                AsyncImage(url: URL(string: timer.imageUrl)) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .frame(width: 30, height: 30)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .cornerRadius(8)
+                    case .failure:
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.gray)
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+                
                 Text(timer.name)
                     .font(.custom("Jersey10-Regular", size: 32))
                     .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
@@ -39,7 +61,7 @@ struct ActiveTimerListItem: View {
 
 #Preview {
     List {
-        ActiveTimerListItem(timer: TimerDisplay(id: UUID(), name: "Next Week", duration: 50, finishTime: Date(timeInterval: 600, since: Date())))
-        ActiveTimerListItem(timer: TimerDisplay(id: UUID(), name: "5 Mins ago", duration: 50, finishTime: Date(timeInterval: -600, since: Date())))
+        ActiveTimerListItem(timer: TimerDisplay(id: UUID(), name: "Next Week", duration: 50, imageUrl: "https://oldschool.runescape.wiki/images/Redwood_logs.png?2e2e3", finishTime: Date(timeInterval: 600, since: Date())))
+        ActiveTimerListItem(timer: TimerDisplay(id: UUID(), name: "5 Mins ago", duration: 50, imageUrl: "https://oldschool.runescape.wiki/images/Redwood_logs.png?2e2e3", finishTime: Date(timeInterval: -600, since: Date())))
     }.listStyle(PlainListStyle())
 }

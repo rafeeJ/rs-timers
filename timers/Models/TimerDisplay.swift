@@ -11,6 +11,7 @@ struct TimerDisplay: Codable, Identifiable {
     let id: UUID
     let name: String
     let duration: TimeInterval
+    let imageUrl: String
     let finishTime: Date
 }
 
