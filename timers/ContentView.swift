@@ -15,29 +15,6 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color(red: 80/255, green: 60/255, blue: 40/255),
-                        Color(red: 50/255, green: 35/255, blue: 20/255)
-                    ]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-                .edgesIgnoringSafeArea(.all)
-
-                RadialGradient(
-                    gradient: Gradient(colors: [
-                        Color(red: 120/255, green: 100/255, blue: 80/255).opacity(0.4),
-                        Color.clear
-                    ]),
-                    center: .bottomLeading,
-                    startRadius: 5,
-                    endRadius: 400
-                )
-                .blendMode(.overlay)
-                .edgesIgnoringSafeArea(.all)
-
                 VStack {
                     List {
                         ForEach(timerManager.timers) { timer in
@@ -50,13 +27,8 @@ struct ContentView: View {
                         }
                     }
                     .listStyle(PlainListStyle())
-                    
-                    Spacer()
-                    AddTimerButton()
-                        .onTapGesture {
-                            showingTimerListView = true
-                        }
                 }
+                .background(Color(red: 36/255, green: 31/255, blue: 25/255))
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -67,13 +39,24 @@ struct ContentView: View {
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            timerManager.clearAllTimers()
+                            showingTimerListView = true
                         } label: {
-                            Image(systemName: "clear.fill")
+                            Image(systemName: "plus")
                                 .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
                         }
                     }
-                }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Menu {
+                            Button(role: .destructive) {
+                                timerManager.clearAllTimers()
+                            } label: {
+                                Label("Clear All Timers", systemImage: "trash")
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .foregroundColor(Color(red: 231/255, green: 196/255, blue: 132/255))
+                        }
+                    }
             }
         }
         .navigationViewStyle(.stack)
@@ -82,7 +65,7 @@ struct ContentView: View {
         }.onAppear {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-            appearance.backgroundColor = UIColor(Color.gray.opacity(0.2))
+            appearance.backgroundColor = UIColor(red: 76/255, green: 65/255, blue: 47/255, alpha: 1.0)
             
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
