@@ -19,7 +19,7 @@ struct TimerListView: View {
         timerCategories.flatMap { $0.timers }
     }
     
-    let fontColor = Color(red: 255/255, green: 152/255, blue: 31/255)
+    let fontColor = Color(red: 216/255, green: 179/255, blue: 110/255)
     
     var body: some View {
         NavigationStack {
@@ -89,8 +89,8 @@ struct TimerListView: View {
 struct TimerListHeader: View {
     var title: String
     
-    let fontColor = Color(red: 255/255, green: 152/255, blue: 31/255)
-    
+    let fontColor = Color(red: 216/255, green: 179/255, blue: 110/255)
+
     var body: some View {
         ZStack {
             Rectangle()

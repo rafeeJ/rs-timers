@@ -26,8 +26,8 @@ struct TimerListViewItem: View {
         }
     }
     
-    let fontColor = Color(red: 255/255, green: 152/255, blue: 31/255)
-    
+    let fontColor = Color(red: 216/255, green: 179/255, blue: 110/255)
+
     var body: some View {
         HStack {
             AsyncImage(url: URL(string: timer.imageUrl)) { phase in

@@ -26,6 +26,18 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .overlay(Group {
+                        if timerManager.timers.isEmpty {
+                            VStack {
+                                Text("No Timers")
+                                    .font(.custom("Jersey10-Regular", size: 32))
+                                    .foregroundColor(Color(red: 216/255, green: 179/255, blue: 110/255))
+                                Text("Tap the + button to add a timer!")
+                                    .font(.custom("Jersey10-Regular", size: 24))
+                                    .foregroundColor(Color(red: 216/255, green: 179/255, blue: 110/255))
+                            }
+                        }
+                    })
                     .listStyle(PlainListStyle())
                 }
                 .background(Color(red: 36/255, green: 31/255, blue: 25/255))
